@@ -1,0 +1,22 @@
+steps:
+  - name: clone
+    image: alpine/git
+    command: |
+      git clone https://github.com/cotyhamilton/tasky
+  - name: script
+    command: |
+      echo "hello from host"
+      pwd
+      whoami
+    type: script
+  - name: build
+    image: denoland/deno:alpine
+    command: |
+      deno run https://examples.deno.land/hello-world.ts
+  - name: cleanup
+    command: |
+      echo "Deleting containers"
+      docker stop $(docker ps -q) > /dev/null 2>&1
+      docker rm $(docker ps -aq) > /dev/null 2>&1
+      exit 0
+    type: script
