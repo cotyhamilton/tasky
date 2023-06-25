@@ -1,0 +1,10 @@
+{
+    "tasks": {
+        "schema": "deno run --unstable --no-lock --allow-read npm:typescript-json-schema global.d.ts Yaml"
+    },
+    "fmt": {
+        "exclude": [
+            "**/*.json"
+        ]
+    }
+}
